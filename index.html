@@ -19,7 +19,9 @@
         rel="stylesheet">
 
     <!-- font-awesome cdn -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -29,7 +31,7 @@
             <div class="logo">
                 <img src="images/logo.png" alt="logo">
             </div>
-            <div class="menu">
+            <div class="menu hidden md:block">
                 <ul class="flex justify-center items-center gap-5">
                     <li><a href="#">
                             <img src="https://img.icons8.com/?size=100&id=73&format=png&color=000000" alt="">
@@ -47,8 +49,38 @@
                     <button class="btn btn-primary ">sing in</button>
                 </ul>
             </div>
+            <div class="md:hidden cursor-pointer" id="menuBar">
+                <ul>
+                    <li class="menu-bar">
+                        <img id="bar" src="https://img.icons8.com/?size=100&id=3096&format=png&color=000000" alt="">
+                    </li>
+                </ul>
+            </div>
         </nav>
-        <section class="hero flex flex-col md:flex-row justify-around items-center h-[550px] text-white rounded-4xl">
+
+        <section id="open-nav" class="bg-white flex justify-center items-center hidden w-full">
+            <div class="menu">
+                <ul class="flex justify-center items-center gap-5">
+                    <li><a href="#">
+                            <img src="https://img.icons8.com/?size=70&id=73&format=png&color=000000" alt="">
+                        </a></li>
+                    <li><a href="#">
+                            <img src="https://img.icons8.com/?size=70&id=11737&format=png&color=000000" alt="">
+                        </a></li>
+                    <li><a href="#">
+                            <img src="https://img.icons8.com/?size=70&id=23374&format=png&color=000000" alt="">
+                        </a></li>
+                    <li><a href="#">
+                            <img src="https://img.icons8.com/?size=70&id=2754&format=png&color=000000" alt="">
+                        </a></li>
+
+                    <button class="btn btn-primary ">sing in</button>
+                </ul>
+            </div>
+        </section>
+
+        <section
+            class="hero p-3 flex flex-col md:flex-row justify-around items-center h-[550px] text-white rounded-4xl">
             <div class="hero-left">
                 <h2 class="text-6xl font-black leading-[64px]">Welcome to the </br> ReTro Forum</h2>
                 <p class="pt-4 pb-8">Share your favorite opinion and win and wp forum coffee mug!</p>
@@ -97,7 +129,7 @@
         </section>
         <article class="md:flex mb-25">
             <div id="artical" class="md:w-[70%] w-full">
-                <!-- for articale -->
+                <!-- for article -->
                 <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
                     <div class="md:flex">
                         <div class="md:flex-shrink-0 relative">
@@ -253,7 +285,8 @@
         </article>
 
         <!-- join our Forum -->
-        <section class="hero flex flex-col md:flex-row justify-between items-center text-white w-full h-full md:h-[400px] p-5 md:p-25 mb-25">
+        <section
+            class="hero flex flex-col md:flex-row justify-between items-center text-white w-full h-full md:h-[400px] p-5 md:p-25 mb-25">
             <div>
                 <h3 class="text-6xl font-black">Join Our Forum</h3>
                 <p class="mt-4 mb-12 text-gray-400">Share your favorite opinion and win and wp forum coffee mug! Yes,
@@ -290,8 +323,8 @@
                     the app.</p>
 
                 <div class="flex items-center">
-                    <img class="h-10 w-10 rounded-full object-cover mr-3" src="https://i.ibb.co/z8zx95w/pexels-davide-de-giovanni-1649675.jpg"
-                        alt="Cameron Williamson">
+                    <img class="h-10 w-10 rounded-full object-cover mr-3"
+                        src="https://i.ibb.co/z8zx95w/pexels-davide-de-giovanni-1649675.jpg" alt="Cameron Williamson">
                     <div>
                         <p class="font-medium text-gray-900">Cameron Williamson</p>
                         <p class="text-sm text-gray-500">Unknown</p>
@@ -304,7 +337,8 @@
     <footer class="w-full h-[480px] footer-bg mt-25 py-25">
         <div class="max-w-11/12 mx-auto border-b border-gray-400 flex flex-col items-center pb-12 mb-12">
             <h2 class="color font-black text-6xl ">ReTro</h2>
-            <p class="pt-4 pb-8 color2">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
+            <p class="pt-4 pb-8 color2">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+                in a piece of classical Latin literature from 45 BC</p>
             <div class="flex gap-5">
                 <i class="fa-brands fa-facebook-f"></i>
                 <i class="fa-brands fa-twitter"></i>
