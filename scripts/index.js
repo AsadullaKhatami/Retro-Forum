@@ -22,8 +22,7 @@ async function loadData(url) {
 
 function latestPost(data) {
     for (let value of data) {
-        console.log(value);
-
+        
         let div = document.createElement('div');
         div.innerHTML = `
                 <img src="${value.cover_image}" alt="">
