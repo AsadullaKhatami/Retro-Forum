@@ -6,6 +6,9 @@ const openNav = document.getElementById('open-nav');
 const url = 'https://openapi.programming-hero.com/api/retro-forum/latest-posts';
 const url2 = 'https://openapi.programming-hero.com/api/retro-forum/posts';
 const post = document.getElementById("latest-post");
+const article = document.getElementById('artical');
+const readAlready = document.getElementById('readAlready');
+let count = Number(readAlready.innerText);
 
 // backend api link latest posts
 async function loadLatestPostData(url) {
@@ -69,8 +72,11 @@ function latestPost(data) {
 function discussPost(data) {
 
     for (let value of data.posts) {
-        console.log(value);
 
+        // console.log(value);
+
+
+        let viewCount = value.view_count;
         let div = document.createElement('div');
         div.innerHTML = `
                 <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
@@ -78,12 +84,12 @@ function discussPost(data) {
                         <div class="md:flex-shrink-0 relative">
                             <img class="h-48 w-full object-cover md:w-48"
                                 src="${value.image}" alt="Card image">
-                            ${value.isActive?"<span class='absolute top-2 left-2 block h-3 w-3 rounded-full ring-2 ring-white bg-red-500'></span>":""}
+                            ${value.isActive ? "<span class='absolute top-2 left-2 block h-3 w-3 rounded-full ring-2 ring-white bg-red-500'></span>" : ""}
                         </div>
                         <div class="p-8">
                             <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"># ${value.category} <span
                                     class="text-gray-400">|</span> Author : ${value.author.name}</div>
-                            <a href="#"
+                            <a href="#" onclick="return false;"
                                 class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">${value.title}</a>
                             <p class="mt-2 text-gray-500">${value.description}</p>
                             <div class="mt-4 border-t border-gray-200 pt-4 flex items-center justify-between">
@@ -106,7 +112,7 @@ function discussPost(data) {
                                                 d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
                                             </path>
                                         </svg>
-                                        <span>${value.view_count}</span>
+                                        <span>${viewCount}</span>
                                     </div>
                                     <div class="flex items-center">
                                         <svg class="h-5 w-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -132,11 +138,37 @@ function discussPost(data) {
                 </div>
         `;
 
-        document.getElementById('artical').appendChild(div);
+        article.appendChild(div);
+        div.addEventListener('click', (evt) => {
+            viewCount = viewCount + 1;
+            count = count + 1;
+            markReadPost(value.title, viewCount, count);
+        });
     }
 }
 
-
+// mark read post 
+function markReadPost(title, viewCount, count) {
+    let div = document.createElement('div');
+    div.innerHTML = `
+        <div class="bg-gray-100 p-3 rounded-lg flex justify-between items-center">
+                                <p class="text-gray-800">${title}</p>
+                                <div class="flex items-center text-gray-500">
+                                    <svg class="h-5 w-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                        </path>
+                                    </svg>
+                                    <span>${viewCount}</span>
+                                </div>
+            </div>
+    `;
+    document.getElementById('markRead').appendChild(div);
+    readAlready.innerText = count;
+}
 
 // console.log(latestPost)
 
@@ -151,3 +183,4 @@ menuBar.addEventListener('click', () => {
 
 loadPostData(url2);
 loadLatestPostData(url);
+
